@@ -1,0 +1,18 @@
+<div>
+<el-dialog title="上传凭证" v-model="dialogVisible" size="small">
+    <div slot="tip" class="el-upload__tip">最多上传12张照片，支持多张照片同时上传</div>
+    <el-upload
+      action="https://jsonplaceholder.typicode.com/posts/"
+      list-type="picture-card"
+      :multiple= true
+      :on-preview="handlePreview"
+      :on-remove="handleRemove">
+      <i class="el-icon-plus"></i>
+      <!-- <el-button slot="trigger" size="small" type="primary">选取文件</el-button> -->
+      <!-- <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>     -->
+  </el-upload>
+</el-dialog>
+<el-dialog v-model="PreviewVisible" size="tiny">
+  <img width="100%" :src="dialogImageUrl" alt="">
+</el-dialog>
+</div>

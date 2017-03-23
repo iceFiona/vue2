@@ -1,0 +1,11 @@
+<div class="login-page">
+    <h1>登录</h1>
+    <div class="line">
+    <label>用户名：</label>
+    <el-input v-model="user" placeholder="请输入用户名"></el-input></div>
+    <div class="line">
+    <label>密码：</label>
+    <el-input type="password" v-model="password" placeholder="请输入密码"></el-input></div>
+    <div class="line">
+    <router-link :to="{ name: 'order' }"><el-button type="primary" class="w100">登录</el-button></router-link></div>
+</div>

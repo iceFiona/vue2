@@ -1,0 +1,176 @@
+<div class="order-detail-page">
+    <img_upload :visible="dialogVisible"></img_upload>
+
+    <div>
+        <el-breadcrumb separator="/">
+          <el-breadcrumb-item :to="{ path: '/' }">我的订单</el-breadcrumb-item>
+          <el-breadcrumb-item>订单详情</el-breadcrumb-item>
+        </el-breadcrumb>
+    </div>
+    <div class="clearfix crumb">
+        <div class="block fl">
+            <el-button type="warning" size="small" @click="dialogVisible = true">上传凭证</el-button>
+            <el-button type="danger" size="small" @click="remarkDialog = true">备注</el-button>
+        </div>
+        <div class="fr"><el-button type="success" size="small" @click="completed">提交完成</el-button></div>
+    </div>
+    <div class="panel">
+        <div class="panel-header"><div class="title">车辆信息</div></div>
+        <div class="panel-body">
+            <el-row :gutter="20">
+              <el-col :span="8">
+                <div class="layout-group">
+                  <label>车牌号</label><span>浙A12345</span>
+                </div>
+                <div class="layout-group">
+                  <label>车架号</label><span>浙A12345</span>
+                </div>
+                <div class="layout-group">
+                  <label>发动机号</label><span>浙A12345</span>
+                </div>
+                <div class="layout-group">
+                  <label>车辆类型</label><span>浙A12345</span>
+                </div>
+              </el-col>
+              <el-col :span="8">
+                <div class="layout-group">
+                  <label>办理城市</label><span>浙A12345</span>
+                </div>
+                <div class="layout-group">
+                  <label>归属地</label><span>浙A12345</span>
+                </div>
+                <div class="layout-group">
+                  <label>档案编号</label><span>浙A12345</span>
+                </div></el-col>
+              <el-col :span="7"><div class="layout-group">
+                  <label>车主姓名</label><span>浙A12345</span>
+                </div>
+                <div class="layout-group">
+                  <label>车主身份证</label><span>浙A12345</span>
+                </div>
+                <div class="layout-group">
+                  <label>行驶证照片</label><span>浙A12345</span>
+                </div></el-col>
+            </el-row>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-header"><div class="title">违章信息</div></div>
+        <div class="panel-body">
+            <el-table
+            :data="tableData"
+            border
+            style="width: 100%">
+            <el-table-column
+              prop="date"
+              label="结算价"
+              width="100">
+            </el-table-column>
+            <el-table-column
+              prop="name"
+              label="罚款金额"
+              width="100">
+            </el-table-column>
+            <el-table-column
+              prop="address"
+              width="80"
+              label="扣分">
+            </el-table-column>
+            <el-table-column
+              prop="address"
+              label="时间">
+            </el-table-column>
+            <el-table-column
+              prop="address"
+              label="地点">
+            </el-table-column>
+            <el-table-column
+              prop="address"
+              label="原因">
+            </el-table-column>
+            <el-table-column
+              prop="address"
+              label="违章城市">
+            </el-table-column>
+            <el-table-column
+              prop="address"
+              width="100"
+              label="同城/异地">
+            </el-table-column>
+          </el-table>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-header"><div class="title">车辆信息</div></div>
+        <div class="panel-body">
+            <el-row :gutter="20">
+              <el-col :span="8">
+                <div class="">
+                  <label>车牌号</label><span>浙A12345</span>
+                </div>
+                <div class="">
+                  <label>车牌号</label><span>浙A12345</span>
+                </div>
+                <div class="">
+                  <label>车牌号</label><span>浙A12345</span>
+                </div>
+                <div class="">
+                  <label>车牌号</label><span>浙A12345</span>
+                </div>
+              </el-col>
+              <el-col :span="8"><div class="">
+                  <label>车牌号</label><span>浙A12345</span>
+                </div>
+                <div class="">
+                  <label>车牌号</label><span>浙A12345</span>
+                </div>
+                <div class="">
+                  <label>车牌号</label><span>浙A12345</span>
+                </div></el-col>
+              <el-col :span="7"><div class="">
+                  <label>车牌号</label><span>浙A12345</span>
+                </div>
+                <div class="">
+                  <label>车牌号</label><span>浙A12345</span>
+                </div>
+                <div class="">
+                  <label>车牌号</label><span>浙A12345</span>
+                </div></el-col>
+            </el-row>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-header"><div class="title">备注</div></div>
+        <div class="panel-body">
+            <el-table
+            :data="tableData"
+            border
+            style="width: 100%">
+            <el-table-column
+              prop="date"
+              label="时间"
+              width="100">
+            </el-table-column>
+            <el-table-column
+              prop="name"
+              label="人员"
+              width="100">
+            </el-table-column>
+            <el-table-column
+              prop="address"
+              label="内容">
+            </el-table-column>
+          </el-table>
+        </div>
+    </div>
+
+  <el-dialog title="备注" v-model="remarkDialog" size="tiny">
+    <div class="el-textarea">
+      <textarea rows="6" class="el-textarea__inner" v-model="remark"></textarea>
+    </div>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="remarkDialog = false">取 消</el-button>
+      <el-button type="primary" @click="remarkDialog = false">确 定</el-button>
+    </span>
+  </el-dialog>
+</div>

@@ -1,0 +1,126 @@
+<div class="order-page clearfix">
+  <img_upload :visible="dialogVisible"></img_upload>
+    <div class="search-panel">
+        <el-row>
+            <el-col :span="3">
+               <p>订单状态：</p>
+                <el-select v-model="value" placeholder="请选择">
+                    <el-option
+                      v-for="(item,index) in options"
+                      :key="index"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-col>
+             <el-col class="w220">
+               <p>派单时间：</p>
+                <el-date-picker
+                  v-model="value7"
+                  type="daterange"
+                  align="right"
+                  placeholder="选择日期范围"
+                  :picker-options="pickerOptions2">
+                </el-date-picker>
+            </el-col>
+             <el-col :span="3">
+               <p>车辆类型：</p>
+                <el-select v-model="value" placeholder="请选择">
+                    <el-option
+                      v-for="(item,index) in options"
+                      :key="index"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                </el-select>
+            </el-col>
+             <el-col :span="4">
+               <p>车牌搜索：</p>
+                <el-input
+                  placeholder="车牌搜索"
+                  v-model="input2">
+                </el-input>
+            </el-col>
+            <el-col :span="3" class="mt20">
+                <el-button type="primary" icon="search">搜索</el-button>
+            </el-col>
+        </el-row>
+        <el-row>
+          <span class="wrapper">
+            <el-button type="success" size="small">接单</el-button>
+            <el-button type="info" size="small">导出表格</el-button>
+          </span>
+        </el-row>
+    </div>
+        <el-table
+        :data="tableData3"
+        border
+        style="width: 100%"
+        @selection-change="handleSelectionChange">
+        <el-table-column
+          type="selection"
+          label="全选"
+          width="55">
+        </el-table-column>
+        <el-table-column
+          label="序号"
+          width="120">
+          <template scope="scope"><router-link :to="{ name: 'orderDetail' }">{{ scope.row.date }}</router-link></template>
+          
+        </el-table-column>
+        <el-table-column
+          prop="name"
+          label="订单状态"
+          width="120">
+        </el-table-column>
+        <el-table-column
+          prop="address"
+          label="车牌号"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="address"
+          label="车辆类型"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="address"
+          label="派单时间"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="address"
+          label="金额"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          label="操作"
+          show-overflow-tooltip>
+           <template scope="scope">
+            <el-button type="text" size="small" @click="dialogVisible = true">上传凭证</el-button>
+            <el-button type="text" size="small" @click="remarkDialog = true">备注</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    <div class="block fr mt20">
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-sizes="[10, 20, 30, 40]"
+          :page-size="10"
+          layout="sizes, prev, pager, next"
+          :total="1000">
+        </el-pagination>
+    </div>
+
+    <el-dialog title="备注" v-model="remarkDialog" size="tiny">
+      <div class="el-textarea">
+        <textarea rows="6" class="el-textarea__inner" v-model="remark"></textarea>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="remarkDialog = false">取 消</el-button>
+        <el-button type="primary" @click="remarkDialog = false">确 定</el-button>
+      </span>
+    </el-dialog>
+</div>
